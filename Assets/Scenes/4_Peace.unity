@@ -1330,6 +1330,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 34033695879707204, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
+      propertyPath: m_Animations.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 34033695879707204, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
+      propertyPath: m_Animations.Array.data[0]
+      value: 
+      objectReference: {fileID: 7400000, guid: 5b4444472425dc54c8b3d2a01ae8651a, type: 2}
+    - target: {fileID: 34033695879707204, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
+      propertyPath: m_Animations.Array.data[1]
+      value: 
+      objectReference: {fileID: 7400000, guid: a79bd941754d2a242bdec3f171250c26, type: 2}
+    - target: {fileID: 34033695879707204, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
+      propertyPath: m_Animations.Array.data[2]
+      value: 
+      objectReference: {fileID: 7400000, guid: 97f25e73c95514641a8a71d8634ef1fb, type: 2}
+    - target: {fileID: 34033695879707204, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
+      propertyPath: m_Animations.Array.data[3]
+      value: 
+      objectReference: {fileID: 7400000, guid: 9c6cabc07c0c86243bd91cfaec69d3cf, type: 2}
     - target: {fileID: 2918630901006123614, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -5.08
@@ -1374,6 +1394,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SideScrollCharacter
       objectReference: {fileID: 0}
+    - target: {fileID: 4865260538094978567, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f0dd2d588c2714b4dbfacf4c934c1bd2, type: 3}
     - target: {fileID: 5515281327181385528, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
       propertyPath: jumpVelocity
       value: 3
