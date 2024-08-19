@@ -12,9 +12,10 @@ public class RunNGunScript : MonoBehaviour
     private bool isLookingUp = false;
     private bool isLookingDown = false;
 
-    public GameObject Shot;
+    public Bullet Shot;
     public Transform ShotSpawn;
-    public float FireRate;
+    public float ShotSpeed = 20f;
+    public float FireRate = 0.125f;
 
     private float nextFire;
 
@@ -66,6 +67,7 @@ public class RunNGunScript : MonoBehaviour
                 ShotSpawn.position -= new Vector3(0f, 0.5f, 0f);
             }
         }
+        Shot.speed = ShotSpeed;
         Instantiate(Shot, ShotSpawn.position, shotDirection);
     }
 
