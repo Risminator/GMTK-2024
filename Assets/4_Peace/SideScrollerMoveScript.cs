@@ -96,7 +96,6 @@ public class SideScrollerMoveScript : MonoBehaviour
         else jumpBufferTimeCounter -= Time.deltaTime;
 
         // Jump check
-        Debug.Log(string.Concat(coyoteTimeCounter.ToString(), jumpBufferTimeCounter.ToString()));
         if (coyoteTimeCounter > 0f && jumpBufferTimeCounter > 0)
         {
             jump();
