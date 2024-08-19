@@ -25,6 +25,8 @@ public class SideScrollerMoveScript : MonoBehaviour
     protected bool Grounded;
     protected Animator animator;
 
+    public bool isContra;
+
     // Start is called before the first frame update
     void Start()
     {

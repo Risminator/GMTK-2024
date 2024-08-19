@@ -921,6 +921,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5515281327181385528, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
+      propertyPath: isContra
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515281327181385528, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
       propertyPath: BoxSize.x
       value: 0.26
       objectReference: {fileID: 0}
@@ -938,7 +942,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
-    - {fileID: 5515281327181385528, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -948,9 +951,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4677255624412522800, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1042778273}
-    - targetCorrespondingSourceObject: {fileID: 4677255624412522800, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1042778274}
   m_SourcePrefab: {fileID: 100100000, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
 --- !u!1 &1042778271 stripped
 GameObject:
@@ -990,28 +990,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85c2fcad2514ddc41959852517107014, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1042778274
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1042778271}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ed9307fdab6048d4a9670f10986e0679, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MaxSpeed: 3
-  Accel: 0
-  Friction: 20
-  BoxSize: {x: 0.26, y: 0.11}
-  CastDistance: 0.68
-  GroundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  jumpVelocity: 5
-  CoyoteTime: 0.2
 --- !u!1 &1397765011
 GameObject:
   m_ObjectHideFlags: 0
