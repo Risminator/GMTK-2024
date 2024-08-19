@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 52880993795247232}
   - component: {fileID: 3921518098915032987}
   - component: {fileID: 5515281327181385528}
-  - component: {fileID: 34033695879707204}
   m_Layer: 0
   m_Name: SideScrollCharacter
   m_TagString: Player
@@ -182,18 +181,3 @@ MonoBehaviour:
     m_Bits: 64
   jumpVelocity: 2.5
   CoyoteTime: 0.1
---- !u!111 &34033695879707204
-Animation:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4677255624412522800}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Animation: {fileID: 0}
-  m_Animations: []
-  m_WrapMode: 0
-  m_PlayAutomatically: 1
-  m_AnimatePhysics: 0
-  m_CullingType: 0

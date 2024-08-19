@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class SideScrollerMoveScript : MonoBehaviour
 {
-    private Rigidbody2D body;
-    private SpriteRenderer sprite;
+    protected Rigidbody2D body;
+    protected SpriteRenderer sprite;
 
     public float MaxSpeed = 10f;
     public float Accel = 5f;
@@ -16,24 +16,25 @@ public class SideScrollerMoveScript : MonoBehaviour
 
     public float jumpVelocity = 6f;
 
-    private bool isControllable = true;
-
     public float CoyoteTime = 0.2f;
-    private float coyoteTimeCounter;
+    protected float coyoteTimeCounter;
 
-    private float jumpBufferTime = 0.2f;
-    private float jumpBufferTimeCounter;
+    protected float jumpBufferTime = 0.2f;
+    protected float jumpBufferTimeCounter;
+
+    protected bool Grounded;
+    protected Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
-        
     }
 
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -46,6 +47,7 @@ public class SideScrollerMoveScript : MonoBehaviour
     private void calculateHorizontalMovement()
     {
         float direction = Input.GetAxisRaw("Horizontal");
+        animator.SetBool("isMoving", direction != 0);
         // Moving
         if (direction != 0)
         {
@@ -79,6 +81,8 @@ public class SideScrollerMoveScript : MonoBehaviour
                 body.velocity = new Vector2(0, body.velocity.y);
             }
         }
+
+        animator.SetFloat("xVelocity", Mathf.Abs(body.velocity.x));
     }
 
     private void checkVerticalMovement()
@@ -103,6 +107,8 @@ public class SideScrollerMoveScript : MonoBehaviour
             accelerateFall();
             coyoteTimeCounter = 0f;
         }
+
+        animator.SetFloat("yVelocity", body.velocity.y);
     }
 
     private void jump()
@@ -118,7 +124,9 @@ public class SideScrollerMoveScript : MonoBehaviour
 
     private bool isGrounded()
     {
-        return Physics2D.BoxCast(transform.position, BoxSize, 0, -transform.up, CastDistance, GroundLayer);
+        Grounded = Physics2D.BoxCast(transform.position, BoxSize, 0, -transform.up, CastDistance, GroundLayer);
+        animator.SetBool("isJumping", !Grounded);
+        return Grounded;
     }
 
     private void OnDrawGizmos()
