@@ -6,11 +6,14 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb;
+    private Animation anim;
     public float speed;
+    public float TimeToLive = 1f;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animation>();
     }
 
     // Start is called before the first frame update
@@ -25,7 +28,13 @@ public class Bullet : MonoBehaviour
 
     IEnumerator SelfDestruct()
     {
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(TimeToLive);
+        Destruct();
+    }
+
+    private void Destruct()
+    {
+
         Destroy(gameObject);
     }
 }

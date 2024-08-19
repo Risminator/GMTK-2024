@@ -16,6 +16,7 @@ public class RunNGunScript : MonoBehaviour
     public Transform ShotSpawn;
     public float ShotSpeed = 20f;
     public float FireRate = 0.125f;
+    public float BulletTime = 1f;
 
     private float nextFire;
 
@@ -68,6 +69,7 @@ public class RunNGunScript : MonoBehaviour
             }
         }
         Shot.speed = ShotSpeed;
+        Shot.TimeToLive = BulletTime;
         Instantiate(Shot, ShotSpawn.position, shotDirection);
     }
 
