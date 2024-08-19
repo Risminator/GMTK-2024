@@ -45,12 +45,21 @@ public class SideScrollerMoveScript : MonoBehaviour
 
     private void calculateHorizontalMovement()
     {
-        float direction = Input.GetAxis("Horizontal");
+        float direction = Input.GetAxisRaw("Horizontal");
         // Moving
         if (direction != 0)
         {
-            body.velocity += new Vector2(direction * Accel * Time.deltaTime, 0);
-            body.velocity = new Vector2(Mathf.Clamp(body.velocity.x, -MaxSpeed, MaxSpeed), body.velocity.y);
+            // In Contra there is no acceleration
+            if (Accel == 0)
+            {
+                body.velocity = new Vector2(MaxSpeed * Mathf.Sign(direction), body.velocity.y);
+            }
+            else
+            {
+                body.velocity += new Vector2(direction * Accel * Time.deltaTime, 0);
+                body.velocity = new Vector2(Mathf.Clamp(body.velocity.x, -MaxSpeed, MaxSpeed), body.velocity.y);
+            }
+            // Sprite flip
             if (direction < 0 != sprite.flipX)
             {
                 // Резкие повороты body.velocity = new Vector2(-body.velocity.x, body.velocity.y);
@@ -60,7 +69,7 @@ public class SideScrollerMoveScript : MonoBehaviour
         else
         {
             // Slowing down (friction)
-            if (Mathf.Abs(body.velocity.x) > Friction * Time.deltaTime)
+            if (Mathf.Abs(body.velocity.x) > Friction * Time.deltaTime && Accel != 0)
             {
                 body.velocity -= new Vector2(Mathf.Sign(body.velocity.x) * Friction * Time.deltaTime, 0);
             }
@@ -83,6 +92,7 @@ public class SideScrollerMoveScript : MonoBehaviour
         else jumpBufferTimeCounter -= Time.deltaTime;
 
         // Jump check
+        Debug.Log(string.Concat(coyoteTimeCounter.ToString(), jumpBufferTimeCounter.ToString()));
         if (coyoteTimeCounter > 0f && jumpBufferTimeCounter > 0)
         {
             jump();
