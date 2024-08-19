@@ -98,7 +98,7 @@ public class SideScrollerMoveScript : MonoBehaviour
             jump();
         }
 
-        if (Input.GetButtonUp("Jump") && body.velocity.y > 0f)
+        if (Accel != 0 && Input.GetButtonUp("Jump") && body.velocity.y > 0f)
         {
             accelerateFall();
             coyoteTimeCounter = 0f;
