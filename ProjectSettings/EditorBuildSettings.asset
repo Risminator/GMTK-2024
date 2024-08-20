@@ -9,14 +9,14 @@ EditorBuildSettings:
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/Contra.unity
-    guid: 4d4f7bc8441855c4592fac997f99e6fa
-  - enabled: 1
     path: Assets/Scenes/1_Pong.unity
     guid: 4c957dffb749b42449bc50e8e849ef93
   - enabled: 1
     path: Assets/Scenes/2_Race.unity
     guid: db915d15ec267634888f9302d8af960e
+  - enabled: 1
+    path: Assets/Scenes/Contra.unity
+    guid: 4d4f7bc8441855c4592fac997f99e6fa
   - enabled: 1
     path: Assets/Scenes/4_Peace.unity
     guid: 7a6c726e146994c4da145fe356699a00
