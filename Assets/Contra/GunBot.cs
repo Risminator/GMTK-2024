@@ -20,6 +20,7 @@ public class GunBot : MonoBehaviour
 
     private void Awake()
     {
+        player = GameObject.FindWithTag("Player");
         animator = GetComponent<Animator>();
         sprite = GetComponent<SpriteRenderer>();
     }
