@@ -11,7 +11,7 @@ public class CycleScript : MonoBehaviour
     public GameEvent OnFinish;
     private SpriteRenderer sprite;
     public float IFramesSec = 2f;
-    private static int score = 0;
+    private Rigidbody2D rb;
 
     public enum Road
     {
@@ -24,12 +24,13 @@ public class CycleScript : MonoBehaviour
     private void Awake()
     {
         sprite = GetComponent<SpriteRenderer>();
+        rb = GetComponent<Rigidbody2D>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(Move(4.4f, 0, 4f));
+        StartCoroutine(Move(4.4f, 0, 4f, 1));
         sprite.color = new Color(1, 1, 1, 0.5f);
         gameObject.layer = LayerMask.NameToLayer("Invincible");
         StartCoroutine(GetVulnerableWithDelay());
@@ -41,6 +42,11 @@ public class CycleScript : MonoBehaviour
         if (IsControllable)
         {
             updatePosition();
+        }
+
+        if (transform.position.x > 3f)
+        {
+            // «¿√–”« ¿ » ‘›…ƒ “” ¬¿…“
         }
     }
 
@@ -76,11 +82,19 @@ public class CycleScript : MonoBehaviour
         }
     }
 
-    public IEnumerator Move(float oldValue, float newValue, float duration)
+    public IEnumerator Move(float oldValue, float newValue, float duration, int i)
     {
         for (float t = 0f; t < duration; t += Time.deltaTime)
         {
-            transform.position = new Vector3(-5f, Mathf.Lerp(oldValue, newValue, t / duration), 0f);
+            if (i == 1)
+            {
+                transform.position = new Vector3(-5f, Mathf.Lerp(oldValue, newValue, t / duration), 0f);
+            }
+            else if (i == 0)
+            {
+                transform.position = new Vector3(Mathf.Lerp(oldValue, newValue, t / duration), 0f, 0f);
+            }
+
             yield return null;
         }
         transform.position = new Vector3 (-5f, newValue, 0f);
@@ -105,12 +119,10 @@ public class CycleScript : MonoBehaviour
         sprite.color = new Color(1, 1, 1, 1);
     }
 
-    public void OnPointAdded()
+    public void OnFinishGame(GameObject sender, object data)
     {
-        score++;
-        if (score == 20)
-        {
-            OnFinish.Raise(gameObject, null);
-        }
+        sprite.color = new Color(1, 1, 1, 0.5f);
+        gameObject.layer = LayerMask.NameToLayer("Invincible");
+        StartCoroutine(Move(-5f, 10f, 3f, 0));
     }
 }

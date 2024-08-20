@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObstructionMove : MonoBehaviour
 {
-    public float maxSpeed = 7.5f;
+    public float maxSpeed = 10f;
     private float speed;
     public GameEvent OnPointAdded;
 
@@ -28,7 +28,7 @@ public class ObstructionMove : MonoBehaviour
     public void StartRace(GameObject sender, object data)
     {
         //areRacing = true;
-        StartCoroutine(changeSpeed(0, maxSpeed, 3f));
+        StartCoroutine(changeSpeed(0, maxSpeed, 0.5f));
     }
 
     public void StopRace(GameObject sender, object data)
