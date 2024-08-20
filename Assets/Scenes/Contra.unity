@@ -2824,7 +2824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3f7d61c5cd8944ebbebfb082cf2feda, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LocalSFXSource: {fileID: 0}
+  LocalSFXSource: {fileID: 1479569065}
   shot: {fileID: 8300000, guid: f55bfe775bc014a8cb0503e982b2ec96, type: 3}
   death: {fileID: 8300000, guid: 1a4704d28f0ca4b1bb22012c4f2b46df, type: 3}
   explosion1: {fileID: 8300000, guid: 4660c2f686fbe4c2ab2e572f8edc619d, type: 3}
