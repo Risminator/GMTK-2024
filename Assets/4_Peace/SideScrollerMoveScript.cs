@@ -14,15 +14,6 @@ public class SideScrollerMoveScript : MonoBehaviour
     public float CastDistance;
     public LayerMask GroundLayer;
 
-    private AudioSource audioSource;
-
-    public AudioClip contraAudioClip;
-
-    public AudioClip PeaceIntroAudioClip;
-    public AudioClip PeaceFirstLoopAudioClip;
-    public AudioClip PeaceSecondLoopAudioClip;
-    public AudioClip PeaceEndAudioClip;
-
     public float jumpVelocity = 6f;
 
     public float CoyoteTime = 0.2f;
@@ -39,42 +30,8 @@ public class SideScrollerMoveScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        audioSource = gameObject.AddComponent<AudioSource>();
 
-        if (!isContra)
-        {
-            StartCoroutine(StartPlaySoundtrack(PeaceIntroAudioClip, PeaceFirstLoopAudioClip));
-        }
     }
-
-    IEnumerator StartPlaySoundtrack(AudioClip introClip, AudioClip loopClip)
-    {
-        yield return PlayClip(introClip, false);
-        yield return PlayClip(loopClip, true);
-    }
-
-    IEnumerator PlayClip(AudioClip clip, bool loop)
-    {
-        if (audioSource.isPlaying)
-        {
-            audioSource.loop = false;
-
-            while (audioSource.isPlaying)
-            {
-                yield return null;
-            }
-        }
-
-        audioSource.loop = loop;
-        audioSource.clip = clip;
-        audioSource.Play();
-
-        while (audioSource.isPlaying)
-        {
-            yield return null;
-        }
-    }
-
 
     private void Awake()
     {
