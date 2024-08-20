@@ -23,6 +23,7 @@ public class RunNGunScript : MonoBehaviour
 
     private float nextFire;
     private bool isDead = false;
+    private Rigidbody2D body;
 
     public static RunNGunScript _instance;
 
@@ -37,6 +38,7 @@ public class RunNGunScript : MonoBehaviour
             _instance = this;
             animator = GetComponent<Animator>();
             sprite = GetComponent<SpriteRenderer>();
+            body = GetComponent<Rigidbody2D>();
         }
     }
 
@@ -82,7 +84,7 @@ public class RunNGunScript : MonoBehaviour
             int shotAxis = sprite.flipX ? 1 : -1;
             shotDirection = Quaternion.Euler(0, 0, 90 * shotAxis);
             ShotSpawn.position = transform.position + transform.right * (-shotAxis) * sprite.size.x / 100f;
-            if (isLying)
+            if (isLying && body.velocity.x == 0)
             {
                 ShotSpawn.position -= new Vector3(0f, 0.5f, 0f);
             }
