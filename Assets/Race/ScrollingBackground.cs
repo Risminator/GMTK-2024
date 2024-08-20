@@ -10,9 +10,22 @@ public class ScrollingBackground : MonoBehaviour
     [SerializeField]
     private Renderer bgRenderer;
 
+    public RaceLocalAudioManager localAudioManager;
+
+    public float minPitch = 0.5f; 
+    public float maxPitch = 1.5f; 
+
     // Start is called before the first frame update
     void Start()
     {
+        if (localAudioManager == null)
+        {
+            localAudioManager = FindObjectOfType<RaceLocalAudioManager>();
+            if (localAudioManager == null)
+            {
+                Debug.LogWarning("RaceLocalAudioManager not found.");
+            }
+        }
     }
 
     // Update is called once per frame
@@ -23,6 +36,7 @@ public class ScrollingBackground : MonoBehaviour
 
     public void StartRace(GameObject sender, object data)
     {
+        localAudioManager.LocalEngineSource.Play();
         StartCoroutine(changeSpeed(0, maxSpeed, 3f));
     }
 
@@ -36,8 +50,20 @@ public class ScrollingBackground : MonoBehaviour
         for (float t = 0f; t < duration; t += Time.deltaTime)
         {
             speed = Mathf.Lerp(oldValue, newValue, t / duration);
+
+            if (localAudioManager != null && localAudioManager.LocalEngineSource != null)
+            {
+                float normalizedSpeed = speed / maxSpeed; 
+                localAudioManager.LocalEngineSource.pitch = Mathf.Lerp(minPitch, maxPitch, normalizedSpeed); 
+            }
             yield return null;
         }
         speed = newValue;
+
+        if (localAudioManager != null && localAudioManager.LocalEngineSource != null)
+        {
+            float finalNormalizedSpeed = speed / maxSpeed;
+            localAudioManager.LocalEngineSource.pitch = Mathf.Lerp(minPitch, maxPitch, finalNormalizedSpeed);
+        }
     }
 }
