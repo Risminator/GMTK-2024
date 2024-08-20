@@ -25,6 +25,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        musicSource.volume -= 0.8f;
         //musicSource = gameObject.AddComponent<AudioSource>();
     }
 

@@ -15,6 +15,7 @@ public class RaceLocalAudioManager : MonoBehaviour
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        LocalSFXSource.volume -= 0.8f;
     }
 
     // Start is called before the first frame update

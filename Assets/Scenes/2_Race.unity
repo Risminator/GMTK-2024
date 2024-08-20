@@ -731,7 +731,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnFinish: {fileID: 11400000, guid: 5cbb1b15c6f521e4e92559759d919b29, type: 2}
-  ScoreToWin: 20
+  ScoreToWin: 5
 --- !u!4 &1384988175
 Transform:
   m_ObjectHideFlags: 0

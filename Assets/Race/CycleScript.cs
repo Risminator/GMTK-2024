@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.U2D;
 
 public class CycleScript : MonoBehaviour
@@ -59,11 +60,6 @@ public class CycleScript : MonoBehaviour
         {
             updatePosition();
         }
-
-        if (transform.position.x > 3f)
-        {
-            // ???????? ? ???? ?? ????
-        }
     }
 
     public void GetControl()
@@ -118,6 +114,26 @@ public class CycleScript : MonoBehaviour
         GetControl();
     }
 
+    public IEnumerator MoveFinishing(float oldValue, float newValue, float duration, int i)
+    {
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            if (i == 1)
+            {
+                transform.position = new Vector3(-5f, Mathf.Lerp(oldValue, newValue, t / duration), 0f);
+            }
+            else if (i == 0)
+            {
+                transform.position = new Vector3(Mathf.Lerp(oldValue, newValue, t / duration), 0f, 0f);
+            }
+
+            yield return null;
+        }
+        transform.position = new Vector3(-5f, newValue, 0f);
+        SceneManager.LoadScene("Contra");
+        //GetControl();
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         OnPlayerDeath.Raise(gameObject, "Player");
@@ -141,6 +157,6 @@ public class CycleScript : MonoBehaviour
     {
         sprite.color = new Color(1, 1, 1, 0.5f);
         gameObject.layer = LayerMask.NameToLayer("Invincible");
-        StartCoroutine(Move(-5f, 10f, 3f, 0));
+        StartCoroutine(MoveFinishing(-5f, 10f, 3f, 0));
     }
 }
