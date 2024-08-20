@@ -1332,7 +1332,7 @@ PrefabInstance:
     - target: {fileID: 5653753164259052927, guid: 8ad4854fe0d294dcca1f8ddd4c3874df, type: 3}
       propertyPath: SFXSource
       value: 
-      objectReference: {fileID: 1356863674}
+      objectReference: {fileID: 0}
     - target: {fileID: 5653753164259052927, guid: 8ad4854fe0d294dcca1f8ddd4c3874df, type: 3}
       propertyPath: ContraIntroAudioClip
       value: 
@@ -1350,7 +1350,8 @@ PrefabInstance:
       value: Audio Manager
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3718564911324464247, guid: 8ad4854fe0d294dcca1f8ddd4c3874df, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ad4854fe0d294dcca1f8ddd4c3874df, type: 3}
@@ -1715,11 +1716,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!82 &1356863674 stripped
-AudioSource:
-  m_CorrespondingSourceObject: {fileID: 5262944153876399928, guid: 8ad4854fe0d294dcca1f8ddd4c3874df, type: 3}
-  m_PrefabInstance: {fileID: 1049882542}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1393950385 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2209751057808964029, guid: 651e08c35cb7a47468b317b33ff671c7, type: 3}
@@ -2829,6 +2825,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LocalSFXSource: {fileID: 0}
+  shot: {fileID: 8300000, guid: f55bfe775bc014a8cb0503e982b2ec96, type: 3}
+  death: {fileID: 8300000, guid: 1a4704d28f0ca4b1bb22012c4f2b46df, type: 3}
+  explosion1: {fileID: 8300000, guid: 4660c2f686fbe4c2ab2e572f8edc619d, type: 3}
+  explosion2: {fileID: 8300000, guid: bffcdf43ddcc2475cb07d4ee3ec2a535, type: 3}
+  explosion3: {fileID: 8300000, guid: bffcdf43ddcc2475cb07d4ee3ec2a535, type: 3}
 --- !u!4 &1971788753
 Transform:
   m_ObjectHideFlags: 0

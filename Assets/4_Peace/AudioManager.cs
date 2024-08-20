@@ -6,7 +6,7 @@ public class AudioManager : MonoBehaviour
 {
 
     [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
+    //[SerializeField] AudioSource SFXSource;
 
     [Header("Contra Soundtrack")]
     public AudioClip ContraIntroAudioClip;
@@ -61,10 +61,5 @@ public class AudioManager : MonoBehaviour
         {
             yield return null;
         }
-    }
-
-    public void playSFX(AudioClip clip)
-    {
-        SFXSource.PlayOneShot(clip);
     }
 }

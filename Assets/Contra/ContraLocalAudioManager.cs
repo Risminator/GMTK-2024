@@ -8,9 +8,20 @@ public class ContraLocalAudioManager : MonoBehaviour
 
     public AudioSource LocalSFXSource;
 
+    [Header("")]
+    public AudioClip shot;
+    public AudioClip death;
+    public AudioClip explosion1;
+    public AudioClip explosion2;
+    public AudioClip explosion3;
+
+    private AudioClip[] explosionsClips;
+    private AudioClip lastPlayedExplosion;
+
     private void Awake()
     {
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        explosionsClips = new AudioClip[] { explosion1, explosion2, explosion3 };
     }
 
     // Start is called before the first frame update
@@ -23,5 +34,22 @@ public class ContraLocalAudioManager : MonoBehaviour
     void Update()
     {
 
+    }
+
+    public void PlaySFX(AudioClip clip)
+    {
+        LocalSFXSource.PlayOneShot(clip);
+    }
+
+    public void PlayRandomExplosion()
+    {
+        AudioClip selectedExplosion;
+        do
+        {
+            selectedExplosion = explosionsClips[Random.Range(0, explosionsClips.Length)];
+        } while (selectedExplosion == lastPlayedExplosion);
+
+        PlaySFX(selectedExplosion);
+        lastPlayedExplosion = selectedExplosion;
     }
 }
