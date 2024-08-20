@@ -13,11 +13,11 @@ GameObject:
   - component: {fileID: -1360259151005470141}
   - component: {fileID: 6547388582753548954}
   - component: {fileID: 8233839883153964225}
-  - component: {fileID: 1195963247087431017}
   - component: {fileID: 3941426973446422377}
+  - component: {fileID: 2341093476029808111}
   m_Layer: 0
   m_Name: Enemy
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -183,23 +183,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.21, y: 0.9}
   m_EdgeRadius: 0
---- !u!114 &1195963247087431017
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 294762690019456420}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 85c2fcad2514ddc41959852517107014, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Shot: {fileID: 258266938385465494, guid: a482bae8d68ec2c41a312287ab0dcb84, type: 3}
-  ShotSpawn: {fileID: 0}
-  ShotSpeed: 5
-  FireRate: 1
-  BulletTime: 3
 --- !u!114 &3941426973446422377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -212,7 +195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c3b470de8c0476346a4103e8ecc26bf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxSpeed: 3
+  MaxSpeed: 2
   Accel: 0
   Friction: 20
   BoxSize: {x: 0.26, y: 0.11}
@@ -220,9 +203,33 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
-  jumpVelocity: 6
+  contraAudioClip: {fileID: 0}
+  PeaceIntroAudioClip: {fileID: 0}
+  PeaceFirstLoopAudioClip: {fileID: 0}
+  PeaceSecondLoopAudioClip: {fileID: 0}
+  PeaceEndAudioClip: {fileID: 0}
+  jumpVelocity: 7
   CoyoteTime: 0.2
+  IsControllable: 1
+  IsPlayer: 1
   isContra: 1
+--- !u!114 &2341093476029808111
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294762690019456420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b164154e66dc60c478fac0a5d5e965bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Shot: {fileID: 258266938385465494, guid: a482bae8d68ec2c41a312287ab0dcb84, type: 3}
+  ShotSpawn: {fileID: 2117988007101858790}
+  ShotSpeed: 10
+  FireRate: 2
+  BulletTime: 5
 --- !u!1 &4761671308374453708
 GameObject:
   m_ObjectHideFlags: 0

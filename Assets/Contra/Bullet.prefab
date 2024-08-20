@@ -96,7 +96,7 @@ Animation:
   m_GameObject: {fileID: 6060886136264816613}
   m_Enabled: 1
   serializedVersion: 3
-  m_Animation: {fileID: 0}
+  m_Animation: {fileID: 7400000, guid: 0ffacc130fa38cf4288d4b3491bd9f67, type: 2}
   m_Animations:
   - {fileID: 7400000, guid: 0ffacc130fa38cf4288d4b3491bd9f67, type: 2}
   - {fileID: 7400000, guid: 517aac3f239d9384dbcb62a5ea0309cc, type: 2}
@@ -144,3 +144,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 20
+  TimeToLive: 1

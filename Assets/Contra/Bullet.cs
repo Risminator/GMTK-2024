@@ -29,12 +29,11 @@ public class Bullet : MonoBehaviour
     IEnumerator SelfDestruct()
     {
         yield return new WaitForSeconds(TimeToLive);
-        Destruct();
-    }
-
-    private void Destruct()
-    {
-
+        anim.Play("HitBullet");
+        while (anim.IsPlaying("HitBullet"))
+        {
+            yield return null;
+        }
         Destroy(gameObject);
     }
 }

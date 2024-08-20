@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Timeline;
 
 public class SideScrollerMoveScript : MonoBehaviour
 {
@@ -34,6 +35,11 @@ public class SideScrollerMoveScript : MonoBehaviour
     protected bool Grounded;
     protected Animator animator;
 
+    private GameObject player;
+
+    public bool IsControllable = true;
+    public bool IsPlayer = true;
+
     public bool isContra;
 
     // Start is called before the first frame update
@@ -44,6 +50,11 @@ public class SideScrollerMoveScript : MonoBehaviour
         if (!isContra)
         {
             StartCoroutine(StartPlaySoundtrack(PeaceIntroAudioClip, PeaceFirstLoopAudioClip));
+        }
+
+        if (!IsPlayer)
+        {
+            StartCoroutine(jumpRegularly());
         }
     }
 
@@ -81,18 +92,43 @@ public class SideScrollerMoveScript : MonoBehaviour
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        calculateHorizontalMovement();
-        checkVerticalMovement();
+        if (IsControllable)
+        {
+            calculateHorizontalMovement();
+            checkVerticalMovement();
+        }
     }
 
     private void calculateHorizontalMovement()
     {
-        float direction = Input.GetAxisRaw("Horizontal");
+        Debug.Log(Vector2.Distance(player.transform.position, transform.position));
+        float direction;
+        if (IsPlayer)
+        {
+            direction = Input.GetAxisRaw("Horizontal");
+        }
+        else if (Vector2.Distance(player.transform.position, transform.position) < 7f)
+        {
+            if (Mathf.Abs(player.transform.position.x - transform.position.x) < 0.01)
+            {
+                direction = 0;
+            }
+            else
+            {
+                direction = Mathf.Sign(player.transform.position.x - transform.position.x);
+            }
+        }
+        else
+        {
+            direction = 0;
+        }
+        
         animator.SetBool("isMoving", direction != 0);
         // Moving
         if (direction != 0)
@@ -133,24 +169,31 @@ public class SideScrollerMoveScript : MonoBehaviour
 
     private void checkVerticalMovement()
     {
-        // CoyoteTimeCounter update
-        if (isGrounded()) coyoteTimeCounter = CoyoteTime;
-        else coyoteTimeCounter -= Time.deltaTime;
-
-        // JumpBufferTimeCounter update
-        if (Input.GetButtonDown("Jump")) jumpBufferTimeCounter = jumpBufferTime;
-        else jumpBufferTimeCounter -= Time.deltaTime;
-
-        // Jump check
-        if (coyoteTimeCounter > 0f && jumpBufferTimeCounter > 0)
+        if (IsPlayer)
         {
-            jump();
+            // CoyoteTimeCounter update
+            if (isGrounded()) coyoteTimeCounter = CoyoteTime;
+            else coyoteTimeCounter -= Time.deltaTime;
+
+            // JumpBufferTimeCounter update
+            if (Input.GetButtonDown("Jump")) jumpBufferTimeCounter = jumpBufferTime;
+            else jumpBufferTimeCounter -= Time.deltaTime;
+
+            // Jump check
+            if (coyoteTimeCounter > 0f && jumpBufferTimeCounter > 0)
+            {
+                jump();
+            }
+
+            if (Accel != 0 && Input.GetButtonUp("Jump") && body.velocity.y > 0f)
+            {
+                accelerateFall();
+                coyoteTimeCounter = 0f;
+            }
         }
-
-        if (Accel != 0 && Input.GetButtonUp("Jump") && body.velocity.y > 0f)
+        else
         {
-            accelerateFall();
-            coyoteTimeCounter = 0f;
+            isGrounded();
         }
 
         animator.SetFloat("yVelocity", body.velocity.y);
@@ -160,6 +203,15 @@ public class SideScrollerMoveScript : MonoBehaviour
     {
         body.velocity = new Vector2(body.velocity.x, jumpVelocity);
         //body.AddForce(new Vector2(body.velocity.x, jumpVelocity * 10));
+    }
+
+    private IEnumerator jumpRegularly()
+    {
+        for (; ; )
+        {
+            if (isGrounded()) jump();
+            yield return new WaitForSeconds(5f);
+        }
     }
 
     private void accelerateFall()

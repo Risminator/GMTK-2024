@@ -911,19 +911,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 294762690019456420, guid: ec2ccb069ce294b4e93224fbad4dbce5, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 294762690019456420, guid: ec2ccb069ce294b4e93224fbad4dbce5, type: 3}
       propertyPath: m_TagString
-      value: Player
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3941426973446422377, guid: ec2ccb069ce294b4e93224fbad4dbce5, type: 3}
+      propertyPath: IsPlayer
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5197547776587891662, guid: ec2ccb069ce294b4e93224fbad4dbce5, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.344
+      value: 6.02
       objectReference: {fileID: 0}
     - target: {fileID: 5197547776587891662, guid: ec2ccb069ce294b4e93224fbad4dbce5, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.301
+      value: -0.63
       objectReference: {fileID: 0}
     - target: {fileID: 5197547776587891662, guid: ec2ccb069ce294b4e93224fbad4dbce5, type: 3}
       propertyPath: m_LocalPosition.z
