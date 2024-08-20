@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8233839883153964225}
   - component: {fileID: 3941426973446422377}
   - component: {fileID: 2341093476029808111}
+  - component: {fileID: 8220711464298176422}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Enemy
@@ -203,15 +204,10 @@ MonoBehaviour:
   GroundLayer:
     serializedVersion: 2
     m_Bits: 64
-  contraAudioClip: {fileID: 0}
-  PeaceIntroAudioClip: {fileID: 0}
-  PeaceFirstLoopAudioClip: {fileID: 0}
-  PeaceSecondLoopAudioClip: {fileID: 0}
-  PeaceEndAudioClip: {fileID: 0}
   jumpVelocity: 7
   CoyoteTime: 0.2
   IsControllable: 1
-  IsPlayer: 1
+  IsPlayer: 0
   isContra: 1
 --- !u!114 &2341093476029808111
 MonoBehaviour:
@@ -230,6 +226,19 @@ MonoBehaviour:
   ShotSpeed: 10
   FireRate: 2
   BulletTime: 5
+--- !u!114 &8220711464298176422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 294762690019456420}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fa1f8116eb5aa42885ac1541010140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Explosion: {fileID: 3231941079590354513, guid: 86bc17ee78526ef47b771d8da1c065f9, type: 3}
 --- !u!1 &4761671308374453708
 GameObject:
   m_ObjectHideFlags: 0

@@ -60,6 +60,7 @@ public class GunBot : MonoBehaviour
         }
         Shot.speed = ShotSpeed;
         Shot.TimeToLive = BulletTime;
+        Shot.tag = "Enemy";
         Instantiate(Shot, ShotSpawn.position, shotDirection);
     }
 

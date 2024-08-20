@@ -53,6 +53,7 @@ public class SideScrollerMoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        IsControllable = !animator.GetBool("isDead");
         if (IsControllable)
         {
             calculateHorizontalMovement();

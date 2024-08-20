@@ -6,19 +6,21 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     private Rigidbody2D rb;
-    private Animation anim;
+    private Animator anim;
     public float speed;
     public float TimeToLive = 1f;
+    public bool IsPlayer = true;
 
     private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        anim = GetComponent<Animation>();
+        anim = GetComponent<Animator>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        anim.SetBool("Ready", false);
         // Звук выстрела здесь!
         // ..................
 
@@ -29,11 +31,23 @@ public class Bullet : MonoBehaviour
     IEnumerator SelfDestruct()
     {
         yield return new WaitForSeconds(TimeToLive);
-        anim.Play("HitBullet");
-        while (anim.IsPlaying("HitBullet"))
-        {
-            yield return null;
-        }
+        anim.SetBool("Ready", true);
+    }
+
+    public void Destruct()
+    {
         Destroy(gameObject);
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (IsPlayer && collision.transform.tag == "Enemy")
+        {
+            
+        }
+        else if (!IsPlayer && collision.transform.tag == "Player")
+        {
+            
+        }
     }
 }

@@ -829,6 +829,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 4677255624412522800, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1042778273}
+    - targetCorrespondingSourceObject: {fileID: 4677255624412522800, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1042778274}
   m_SourcePrefab: {fileID: 100100000, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
 --- !u!1 &1042778271 stripped
 GameObject:
@@ -873,6 +876,20 @@ MonoBehaviour:
   ShotSpeed: 20
   FireRate: 0.125
   BulletTime: 1
+--- !u!114 &1042778274
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1042778271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54fa1f8116eb5aa42885ac1541010140, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Explosion: {fileID: 3231941079590354513, guid: 86bc17ee78526ef47b771d8da1c065f9, type: 3}
+  OnPlayerDeath: {fileID: 0}
 --- !u!1001 &1049882542
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -974,6 +991,10 @@ PrefabInstance:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 2341093476029808111, guid: ec2ccb069ce294b4e93224fbad4dbce5, type: 3}
+      propertyPath: BulletTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3941426973446422377, guid: ec2ccb069ce294b4e93224fbad4dbce5, type: 3}
       propertyPath: IsPlayer
       value: 0
@@ -1018,6 +1039,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8220711464298176422, guid: ec2ccb069ce294b4e93224fbad4dbce5, type: 3}
+      propertyPath: OnPlayerDeath
+      value: 
+      objectReference: {fileID: 11400000, guid: 3104170449e73254fa12b1411ea1306e, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1318,7 +1343,7 @@ Transform:
   m_GameObject: {fileID: 1601729570}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.5564294, y: 0.66029, z: -7.88}
+  m_LocalPosition: {x: -4.4310794, y: 0.66029, z: -7.88}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

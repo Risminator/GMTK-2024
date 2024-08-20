@@ -70,6 +70,7 @@ public class RunNGunScript : MonoBehaviour
         }
         Shot.speed = ShotSpeed;
         Shot.TimeToLive = BulletTime;
+        Shot.tag = "Player";
         Instantiate(Shot, ShotSpawn.position, shotDirection);
     }
 

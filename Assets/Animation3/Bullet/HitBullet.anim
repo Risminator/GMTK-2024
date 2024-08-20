@@ -8,7 +8,7 @@ AnimationClip:
   m_PrefabAsset: {fileID: 0}
   m_Name: HitBullet
   serializedVersion: 7
-  m_Legacy: 1
+  m_Legacy: 0
   m_Compressed: 0
   m_UseHighQualityCurve: 1
   m_RotationCurves: []
@@ -22,7 +22,7 @@ AnimationClip:
     curve:
     - time: 0
       value: {fileID: -978213777, guid: 8b1083c52bca3f64bbc6d88bb5b2e6f3, type: 3}
-    - time: 0.16666667
+    - time: 0.016666668
       value: {fileID: -978213777, guid: 8b1083c52bca3f64bbc6d88bb5b2e6f3, type: 3}
     attribute: m_Sprite
     path: 
@@ -35,19 +35,30 @@ AnimationClip:
     m_Center: {x: 0, y: 0, z: 0}
     m_Extent: {x: 0, y: 0, z: 0}
   m_ClipBindingConstant:
-    genericBindings: []
-    pptrCurveMapping: []
+    genericBindings:
+    - serializedVersion: 2
+      path: 0
+      attribute: 0
+      script: {fileID: 0}
+      typeID: 212
+      customType: 23
+      isPPtrCurve: 1
+      isIntCurve: 0
+      isSerializeReferenceCurve: 0
+    pptrCurveMapping:
+    - {fileID: -978213777, guid: 8b1083c52bca3f64bbc6d88bb5b2e6f3, type: 3}
+    - {fileID: -978213777, guid: 8b1083c52bca3f64bbc6d88bb5b2e6f3, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.18333334
+    m_StopTime: 0.16666667
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
     m_HasAdditiveReferencePose: 0
-    m_LoopTime: 1
+    m_LoopTime: 0
     m_LoopBlend: 0
     m_LoopBlendOrientation: 0
     m_LoopBlendPositionY: 0
@@ -61,4 +72,11 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.16666667
+    functionName: Destruct
+    data: 
+    objectReferenceParameter: {fileID: 6060886136264816613, guid: a482bae8d68ec2c41a312287ab0dcb84, type: 3}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
