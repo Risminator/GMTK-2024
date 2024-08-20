@@ -63,13 +63,12 @@ public class SideScrollerMoveScript : MonoBehaviour
 
     private void calculateHorizontalMovement()
     {
-        Debug.Log(Vector2.Distance(player.transform.position, transform.position));
         float direction;
         if (IsPlayer)
         {
             direction = Input.GetAxisRaw("Horizontal");
         }
-        else if (Vector2.Distance(player.transform.position, transform.position) < 7f)
+        else if (player != null && Vector2.Distance(player.transform.position, transform.position) < 7f)
         {
             if (Mathf.Abs(player.transform.position.x - transform.position.x) < 0.01)
             {

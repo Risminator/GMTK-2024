@@ -16,7 +16,7 @@ public class GunBot : MonoBehaviour
     private Animator animator;
     private SpriteRenderer sprite;
 
-    private bool isLookingUp;
+    private bool isLookingUp = false;
 
     private void Awake()
     {
@@ -34,8 +34,11 @@ public class GunBot : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        isLookingUp = player.transform.position.y > transform.position.y;
-        animator.SetBool("isLookingUp", isLookingUp);
+        if (player != null)
+        {
+            isLookingUp = player.transform.position.y > transform.position.y;
+            animator.SetBool("isLookingUp", isLookingUp);
+        }
 
         if (Time.time > nextFire)
         {
