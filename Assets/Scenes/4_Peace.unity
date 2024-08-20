@@ -696,8 +696,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LocalSFXSource: {fileID: 1215336371}
-  LocalAmbienceSource: {fileID: 0}
-  wind: {fileID: 0}
+  LocalAmbienceSource: {fileID: 99175137}
+  wind: {fileID: 8300000, guid: 1ea9b577f6c6347e5b804a6da4dcaa57, type: 3}
   step1: {fileID: 8300000, guid: 41cdced5c2ddf48968301bb287b9dcbb, type: 3}
   step2: {fileID: 8300000, guid: ab4f4ef16011e4058abb31de79c610c2, type: 3}
   step3: {fileID: 8300000, guid: fd0d259e5b6814caf95ed576d6bd571a, type: 3}
