@@ -65,7 +65,11 @@ public class SideScrollerMoveScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        IsControllable = !animator.GetBool("isDead");
+        if (isContra)
+        {
+            IsControllable = !animator.GetBool("isDead");
+        }
+        
         if (IsControllable)
         {
             calculateHorizontalMovement();
@@ -211,5 +215,10 @@ public class SideScrollerMoveScript : MonoBehaviour
     private void OnDrawGizmos()
     {
         Gizmos.DrawWireCube(transform.position - transform.up * CastDistance, BoxSize);
+    }
+
+    private void getControl()
+    {
+        IsControllable = true;
     }
 }

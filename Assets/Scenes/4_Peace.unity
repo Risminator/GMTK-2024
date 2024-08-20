@@ -1888,6 +1888,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 5515281327181385528, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
+      propertyPath: IsControllable
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5515281327181385528, guid: f9f840a67c693dc488500372ea9a3c4d, type: 3}
       propertyPath: PeaceEndAudioClip
       value: 
       objectReference: {fileID: 8300000, guid: 1d1ffc186ea4149a295bc35af1b48bd4, type: 3}
