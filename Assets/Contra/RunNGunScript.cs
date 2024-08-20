@@ -1,6 +1,8 @@
+using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditorInternal;
 using UnityEngine;
 
 public class RunNGunScript : MonoBehaviour
@@ -17,30 +19,47 @@ public class RunNGunScript : MonoBehaviour
     public float ShotSpeed = 20f;
     public float FireRate = 0.125f;
     public float BulletTime = 1f;
+    public float IFramesSec = 2f;
 
     private float nextFire;
+    private bool isDead = false;
+
+    public static RunNGunScript _instance;
 
     private void Awake()
     {
-        animator = GetComponent<Animator>();
-        sprite = GetComponent<SpriteRenderer>();
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+            animator = GetComponent<Animator>();
+            sprite = GetComponent<SpriteRenderer>();
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        sprite.color = new Color(1, 1, 1, 0.5f);
+        gameObject.layer = LayerMask.NameToLayer("Invincible");
+        StartCoroutine(GetVulnerableWithDelay());
     }
 
     // Update is called once per frame
     void Update()
     {
-        updateLyingAnimation();
-        updateLookingUpAnimation();
-
-        if ((Input.GetKey(KeyCode.X) || Input.GetMouseButton(0) || Input.GetKey(KeyCode.F)) && Time.time > nextFire)
+        if (!isDead)
         {
-            shoot();
+            updateLyingAnimation();
+            updateLookingUpAnimation();
+
+            if ((Input.GetKey(KeyCode.X) || Input.GetMouseButton(0) || Input.GetKey(KeyCode.F)) && Time.time > nextFire)
+            {
+                shoot();
+            }
         }
     }
 
@@ -70,7 +89,7 @@ public class RunNGunScript : MonoBehaviour
         }
         Shot.speed = ShotSpeed;
         Shot.TimeToLive = BulletTime;
-        Shot.tag = "Player";
+        Shot.gameObject.layer = LayerMask.NameToLayer("Player");
         Instantiate(Shot, ShotSpawn.position, shotDirection);
     }
 
@@ -107,5 +126,25 @@ public class RunNGunScript : MonoBehaviour
         }
 
         animator.SetBool("isLookingUp", isLookingUp);
+    }
+
+    public void Destruct()
+    {
+            Destroy(gameObject);
+    }
+
+    public void OnDeath(GameObject sender, object data)
+    {
+        if (data is string && (string)data == "Player")
+        {
+            isDead = true;
+        }
+    }
+
+    private IEnumerator GetVulnerableWithDelay()
+    {
+        yield return new WaitForSeconds(IFramesSec);
+        gameObject.layer = LayerMask.NameToLayer("Player");
+        sprite.color = new Color(1, 1, 1, 1);
     }
 }

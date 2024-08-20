@@ -17,6 +17,7 @@ public class GunBot : MonoBehaviour
     private SpriteRenderer sprite;
 
     private bool isLookingUp = false;
+    private bool canShoot = true;
 
     private void Awake()
     {
@@ -40,7 +41,7 @@ public class GunBot : MonoBehaviour
             animator.SetBool("isLookingUp", isLookingUp);
         }
 
-        if (Time.time > nextFire)
+        if (Time.time > nextFire && canShoot)
         {
             shoot();
         }
@@ -63,7 +64,7 @@ public class GunBot : MonoBehaviour
         }
         Shot.speed = ShotSpeed;
         Shot.TimeToLive = BulletTime;
-        Shot.tag = "Enemy";
+        Shot.transform.gameObject.layer = LayerMask.NameToLayer("Enemy");
         Instantiate(Shot, ShotSpawn.position, shotDirection);
     }
 
@@ -73,6 +74,19 @@ public class GunBot : MonoBehaviour
         {
             shoot();
             yield return new WaitForSeconds(2f);
+        }
+    }
+
+    public void Destruct()
+    {
+        Destroy(gameObject);
+    }
+
+    public void OnDeath(GameObject sender, object data)
+    {
+        if (sender.Equals(gameObject))
+        {
+            canShoot = false;
         }
     }
 }

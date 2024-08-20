@@ -27,33 +27,29 @@ public class DeathScript : MonoBehaviour
         
     }
 
-    public void Die()
+    public void PrepareToDie(LayerMask layer)
     {
-        Instantiate(Explosion, transform.position, Quaternion.Euler(0, 0 ,0));
+        Instantiate(Explosion, transform.position + new Vector3(0f, 0.2f, 0f), Quaternion.Euler(0, 0 ,0));
+        Instantiate(Explosion, transform.position + new Vector3(0.3f, -0.1f, 0f), Quaternion.Euler(0, 0 ,0));
+        Instantiate(Explosion, transform.position + new Vector3(-0.4f, -0.2f, 0f), Quaternion.Euler(0, 0 ,0));
+        OnPlayerDeath.Raise(gameObject, LayerMask.LayerToName(layer));
         anim.SetBool("isDead", true);
         boxCollider.enabled = false;
-        OnPlayerDeath.Raise(gameObject, null);
     }
-
-    public void Destruct()
-    {
-        Destroy(gameObject);
-    }
-
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (tag == "Player" && collision.transform.tag == "Enemy")
+        if (gameObject.layer == LayerMask.NameToLayer("Player") && collision.gameObject.layer == LayerMask.NameToLayer("Enemy"))
         {
-            Die();
+            PrepareToDie(gameObject.layer);
         }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if ((tag == "Player" && collision.transform.tag == "Enemy") || (tag == "Enemy" && collision.transform.tag == "Player"))
+        if ((gameObject.layer == LayerMask.NameToLayer("Player") && collision.gameObject.layer == LayerMask.NameToLayer("Enemy")) || (gameObject.layer == LayerMask.NameToLayer("Enemy") && collision.gameObject.layer == LayerMask.NameToLayer("Player")))
         {
-            Die();
+            PrepareToDie(gameObject.layer);
         }
     }
 }

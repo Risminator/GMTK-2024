@@ -41,13 +41,6 @@ public class Bullet : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (IsPlayer && collision.transform.tag == "Enemy")
-        {
-            
-        }
-        else if (!IsPlayer && collision.transform.tag == "Player")
-        {
-            
-        }
+        anim.SetBool("Ready", true);
     }
 }

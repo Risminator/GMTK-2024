@@ -14,9 +14,9 @@ GameObject:
   - component: {fileID: 258266938385465494}
   - component: {fileID: -7965674602317334907}
   - component: {fileID: -3396704053221374835}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Bullet
-  m_TagString: Enemy
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -127,8 +127,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1696bd79e0a628748900749bfafcb330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
-  TimeToLive: 5
+  speed: 20
+  TimeToLive: 1
   IsPlayer: 1
 --- !u!95 &-7965674602317334907
 Animator:
