@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GunBot : MonoBehaviour
@@ -39,6 +40,10 @@ public class GunBot : MonoBehaviour
         {
             isLookingUp = player.transform.position.y > transform.position.y;
             animator.SetBool("isLookingUp", isLookingUp);
+        }
+        else
+        {
+            player = GameObject.FindWithTag("Player");
         }
 
         if (Time.time > nextFire && canShoot)

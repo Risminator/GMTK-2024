@@ -82,7 +82,12 @@ public class SideScrollerMoveScript : MonoBehaviour
         else
         {
             direction = 0;
+            if (player == null)
+            {
+                player = GameObject.FindGameObjectWithTag("Player");
+            }
         }
+
 
         animator.SetBool("isMoving", direction != 0);
         // Moving
