@@ -601,6 +601,8 @@ GameObject:
   - component: {fileID: 837182360}
   - component: {fileID: 837182359}
   - component: {fileID: 837182362}
+  - component: {fileID: 837182364}
+  - component: {fileID: 837182363}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -726,6 +728,47 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
+--- !u!114 &837182363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837182358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2586fcec22b74bd46be2e2095d3c35d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnFall: {fileID: 11400000, guid: 374bd3496a783c34f9d5283a82f57d3f, type: 2}
+--- !u!114 &837182364
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 837182358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0680bf5d211d61644ac178fb6f5aa69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5cbb1b15c6f521e4e92559759d919b29, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 837182363}
+        m_TargetAssemblyTypeName: PongCamera, Assembly-CSharp
+        m_MethodName: StartZoomOut
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &897562719
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,6 +965,7 @@ MonoBehaviour:
   LocalSFXSource: {fileID: 1425140834}
   PingAudioClip: {fileID: 8300000, guid: 935c13ffde20749d6b325df3d1a46dd7, type: 3}
   PongAudioClip: {fileID: 8300000, guid: 1b14520825957424dbeceb65bf3e8dd5, type: 3}
+  Explosion: {fileID: 8300000, guid: 4660c2f686fbe4c2ab2e572f8edc619d, type: 3}
 --- !u!4 &1043763405
 Transform:
   m_ObjectHideFlags: 0
@@ -949,6 +993,7 @@ GameObject:
   - component: {fileID: 1198127397}
   - component: {fileID: 1198127399}
   - component: {fileID: 1198127398}
+  - component: {fileID: 1198127400}
   m_Layer: 5
   m_Name: PlayerScore
   m_TagString: Untagged
@@ -1017,6 +1062,19 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1198127396}
   m_CullTransparentMesh: 1
+--- !u!114 &1198127400
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1198127396}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2301e1d2b4fc0a34ba96f35f9bd30bc2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  OnFinish: {fileID: 11400000, guid: 5cbb1b15c6f521e4e92559759d919b29, type: 2}
 --- !u!1 &1212578047
 GameObject:
   m_ObjectHideFlags: 0
@@ -1030,6 +1088,8 @@ GameObject:
   - component: {fileID: 1212578049}
   - component: {fileID: 1212578048}
   - component: {fileID: 1212578052}
+  - component: {fileID: 1212578053}
+  - component: {fileID: 1212578054}
   m_Layer: 0
   m_Name: ball
   m_TagString: Untagged
@@ -1192,6 +1252,63 @@ MonoBehaviour:
   speedIncrease: 0.25
   playerScore: {fileID: 1198127398}
   AIScore: {fileID: 382558081}
+  NewSprite: {fileID: 21300000, guid: af1d0c5ebab7cbd4f9daf8a83ade96a8, type: 3}
+--- !u!114 &1212578053
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212578047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0680bf5d211d61644ac178fb6f5aa69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 5cbb1b15c6f521e4e92559759d919b29, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1212578052}
+        m_TargetAssemblyTypeName: BallMovement, Assembly-CSharp
+        m_MethodName: OnFinishGame
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1212578054
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1212578047}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0680bf5d211d61644ac178fb6f5aa69c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameEvent: {fileID: 11400000, guid: 374bd3496a783c34f9d5283a82f57d3f, type: 2}
+  response:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1212578052}
+        m_TargetAssemblyTypeName: BallMovement, Assembly-CSharp
+        m_MethodName: OnFall
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1294994696
 GameObject:
   m_ObjectHideFlags: 0

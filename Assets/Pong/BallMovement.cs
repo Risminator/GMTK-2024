@@ -11,9 +11,13 @@ public class BallMovement : MonoBehaviour
     [SerializeField] private Text AIScore;
 
     private PongLocalAudioManager localAudioManager;
+    private SpriteRenderer someSprite;
+
+    private bool isFinished = false;
 
     private int hitCounter;
     private Rigidbody2D rb;
+    public Sprite NewSprite;
 
     private void Awake()
     {
@@ -26,6 +30,7 @@ public class BallMovement : MonoBehaviour
         {
             Debug.LogWarning("LocalAudioManager not found");
         }
+        someSprite = GetComponent<SpriteRenderer>();
     }
 
     // Start is called before the first frame update
@@ -50,7 +55,10 @@ public class BallMovement : MonoBehaviour
         rb.velocity = new Vector2(0, 0);
         transform.position = new Vector2(0, 0);
         hitCounter = 0;
-        Invoke("StartBall", 2f);
+        if (!isFinished)
+        {
+            Invoke("StartBall", 2f);
+        }
     }
 
     private void PlayerBounce(Transform myObject)
@@ -109,4 +117,25 @@ public class BallMovement : MonoBehaviour
         }
     }
 
+    public void OnFinishGame(GameObject sender, object data)
+    {
+        someSprite.sprite = NewSprite;
+        isFinished = true;
+    }
+
+    public void OnFall(GameObject sender, object data)
+    {
+        StartCoroutine(ZoomOut(transform.position.y, transform.position.y - 20f, 1f));
+    }
+
+    private IEnumerator ZoomOut(float oldValue, float newValue, float duration)
+    {
+        for (float t = 0f; t < duration; t += Time.deltaTime)
+        {
+            transform.position = new Vector3(0f, Mathf.Lerp(oldValue, newValue, t / duration), 0f);
+            yield return null;
+        }
+        transform.position = new Vector3(0f, newValue, 0f);
+        // оепеирх мю якедсчысч яжемс
+    }
 }

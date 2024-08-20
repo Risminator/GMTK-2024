@@ -8,6 +8,7 @@ public class PongLocalAudioManager : MonoBehaviour
 
     public AudioClip PingAudioClip;
     public AudioClip PongAudioClip;
+    public AudioClip Explosion;
 
     private void Awake()
     {
