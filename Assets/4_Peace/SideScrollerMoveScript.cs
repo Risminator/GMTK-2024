@@ -5,6 +5,9 @@ using UnityEngine.Timeline;
 
 public class SideScrollerMoveScript : MonoBehaviour
 {
+
+    private LocalAudioManager peaceAudioManager;
+
     protected Rigidbody2D body;
     protected SpriteRenderer sprite;
 
@@ -44,6 +47,8 @@ public class SideScrollerMoveScript : MonoBehaviour
 
     private void Awake()
     {
+        peaceAudioManager = GameObject.FindGameObjectWithTag("LocalAudio").GetComponent<LocalAudioManager>();
+
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -103,6 +108,8 @@ public class SideScrollerMoveScript : MonoBehaviour
             {
                 // Резкие повороты body.velocity = new Vector2(-body.velocity.x, body.velocity.y);
                 sprite.flipX = direction < 0;
+
+                peaceAudioManager.StartPlayingSteps();
             }
         }
         else
@@ -116,6 +123,8 @@ public class SideScrollerMoveScript : MonoBehaviour
             // Full Stop
             {
                 body.velocity = new Vector2(0, body.velocity.y);
+
+                peaceAudioManager.StopPlayingSteps();
             }
         }
 
@@ -158,6 +167,7 @@ public class SideScrollerMoveScript : MonoBehaviour
     {
         body.velocity = new Vector2(body.velocity.x, jumpVelocity);
         //body.AddForce(new Vector2(body.velocity.x, jumpVelocity * 10));
+
     }
 
     private IEnumerator jumpRegularly()

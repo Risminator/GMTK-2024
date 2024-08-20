@@ -8,8 +8,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
 
-    [Header("")]
-
     [Header("Peace Soundtrack")]
     public AudioClip PeaceIntroAudioClip;
     public AudioClip PeaceFirstLoopAudioClip;
@@ -60,8 +58,20 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-    public void playSFX(AudioClip clip)
+    public void PlaySFX(AudioClip clip)
     {
+        if (clip == null)
+        {
+            Debug.LogError("AudioClip is null. Cannot play sound.");
+            return;
+        }
+
+        if (SFXSource == null)
+        {
+            Debug.LogError("AudioSource is null. Cannot play sound.");
+            return;
+        }
+
         SFXSource.PlayOneShot(clip);
     }
 }
