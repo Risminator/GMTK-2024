@@ -846,6 +846,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5653753164259052927, guid: 8ad4854fe0d294dcca1f8ddd4c3874df, type: 3}
+      propertyPath: SFXSource
+      value: 
+      objectReference: {fileID: 1356863674}
     - target: {fileID: 8513625956828302278, guid: 8ad4854fe0d294dcca1f8ddd4c3874df, type: 3}
       propertyPath: m_Name
       value: Audio Manager
@@ -991,6 +995,11 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!82 &1356863674 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5262944153876399928, guid: 8ad4854fe0d294dcca1f8ddd4c3874df, type: 3}
+  m_PrefabInstance: {fileID: 1049882542}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1397765011
 GameObject:
   m_ObjectHideFlags: 0
