@@ -10,8 +10,23 @@ public class BallMovement : MonoBehaviour
     [SerializeField] private Text playerScore;
     [SerializeField] private Text AIScore;
 
+    private PongLocalAudioManager localAudioManager;
+
     private int hitCounter;
     private Rigidbody2D rb;
+
+    private void Awake()
+    {
+        GameObject localAudioObject = GameObject.FindGameObjectWithTag("LocalAudio");
+        if (localAudioObject != null)
+        {
+            localAudioManager = localAudioObject.GetComponent<PongLocalAudioManager>();
+        }
+        else
+        {
+            Debug.LogWarning("LocalAudioManager not found");
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -67,6 +82,16 @@ public class BallMovement : MonoBehaviour
         if(collision.gameObject.name == "Player" || collision.gameObject.name == "AI")
         {
             PlayerBounce(collision.transform);
+        }
+
+        if(collision.gameObject.name == "Player")
+        {
+            localAudioManager.PlaySFX(localAudioManager.PingAudioClip);
+        }
+
+        if (collision.gameObject.name == "AI")
+        {
+            localAudioManager.PlaySFX(localAudioManager.PongAudioClip);
         }
     }
 
