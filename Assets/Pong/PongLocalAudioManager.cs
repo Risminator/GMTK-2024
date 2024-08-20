@@ -12,7 +12,7 @@ public class PongLocalAudioManager : MonoBehaviour
 
     private void Awake()
     {
-
+        LocalSFXSource.volume -= 0.8f;
     }
 
     // Start is called before the first frame update

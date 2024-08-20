@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class BallMovement : MonoBehaviour
@@ -136,6 +137,6 @@ public class BallMovement : MonoBehaviour
             yield return null;
         }
         transform.position = new Vector3(0f, newValue, 0f);
-        // оепеирх мю якедсчысч яжемс
+        SceneManager.LoadScene("2_Race");
     }
 }

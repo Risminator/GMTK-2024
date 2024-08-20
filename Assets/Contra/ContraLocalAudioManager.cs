@@ -20,6 +20,7 @@ public class ContraLocalAudioManager : MonoBehaviour
 
     private void Awake()
     {
+        LocalSFXSource.volume -= 0.8f;
         audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
         explosionsClips = new AudioClip[] { explosion1, explosion2, explosion3 };
     }
