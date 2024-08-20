@@ -8,6 +8,10 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
     //[SerializeField] AudioSource SFXSource;
 
+    [Header("Race Soundtrack")]
+    public AudioClip RaceFirstLoopAudioClip;
+    public AudioClip RaceSecondLoopAudioClip;
+
     [Header("Contra Soundtrack")]
     public AudioClip ContraIntroAudioClip;
     public AudioClip ContraFirstLoopAudioClip;
