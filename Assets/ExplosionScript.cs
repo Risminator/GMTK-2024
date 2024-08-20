@@ -4,20 +4,27 @@ using UnityEngine;
 
 public class ExplosionScript : MonoBehaviour
 {
-    AudioManager audioManager;
+    private ContraLocalAudioManager localAudioManager;
+
     private void Awake()
     {
-        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+        GameObject localAudioObject = GameObject.FindGameObjectWithTag("LocalAudio");
+        if (localAudioObject != null)
+        {
+            localAudioManager = localAudioObject.GetComponent<ContraLocalAudioManager>();
+        }
+        else
+        {
+            Debug.LogWarning("LocalAudioManager not found");
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        if (audioManager != null)
-        {
-        }
+        localAudioManager.PlayRandomExplosion();
         
-        // Звук 
+        // ???? 
     }
 
     public void Destruct()

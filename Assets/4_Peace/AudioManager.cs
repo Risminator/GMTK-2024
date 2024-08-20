@@ -6,7 +6,16 @@ public class AudioManager : MonoBehaviour
 {
 
     [SerializeField] AudioSource musicSource;
-    [SerializeField] AudioSource SFXSource;
+    //[SerializeField] AudioSource SFXSource;
+
+    [Header("Race Soundtrack")]
+    public AudioClip RaceFirstLoopAudioClip;
+    public AudioClip RaceSecondLoopAudioClip;
+
+    [Header("Contra Soundtrack")]
+    public AudioClip ContraIntroAudioClip;
+    public AudioClip ContraFirstLoopAudioClip;
+    public AudioClip ContraSecondLoopAudioClip;
 
     [Header("Peace Soundtrack")]
     public AudioClip PeaceIntroAudioClip;
@@ -16,6 +25,7 @@ public class AudioManager : MonoBehaviour
 
     void Start()
     {
+        musicSource.volume -= 0.8f;
         //musicSource = gameObject.AddComponent<AudioSource>();
     }
 
@@ -56,10 +66,5 @@ public class AudioManager : MonoBehaviour
         {
             yield return null;
         }
-    }
-
-    public void playSFX(AudioClip clip)
-    {
-        SFXSource.PlayOneShot(clip);
     }
 }

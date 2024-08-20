@@ -10,6 +10,8 @@ public class RunNGunScript : MonoBehaviour
     private Animator animator;
     private SpriteRenderer sprite;
 
+    private ContraLocalAudioManager localAudioManager;
+
     private bool isLying = false;
     private bool isLookingUp = false;
     private bool isLookingDown = false;
@@ -29,6 +31,16 @@ public class RunNGunScript : MonoBehaviour
 
     private void Awake()
     {
+        GameObject localAudioObject = GameObject.FindGameObjectWithTag("LocalAudio");
+        if (localAudioObject != null)
+        {
+            localAudioManager = localAudioObject.GetComponent<ContraLocalAudioManager>();
+        }
+        else
+        {
+            Debug.LogWarning("LocalAudioManager not found");
+        }
+
         if (_instance != null && _instance != this)
         {
             Destroy(this.gameObject);
@@ -67,6 +79,8 @@ public class RunNGunScript : MonoBehaviour
 
     private void shoot()
     {
+
+        localAudioManager.PlaySFX(localAudioManager.shot);
         Quaternion shotDirection;
         nextFire = Time.time + FireRate;
         if (isLookingUp)
@@ -139,6 +153,7 @@ public class RunNGunScript : MonoBehaviour
     {
         if (data is string && (string)data == "Player")
         {
+            localAudioManager.PlaySFX(localAudioManager.death);
             isDead = true;
         }
     }

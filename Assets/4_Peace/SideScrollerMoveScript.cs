@@ -125,10 +125,12 @@ public class SideScrollerMoveScript : MonoBehaviour
                 // Резкие повороты body.velocity = new Vector2(-body.velocity.x, body.velocity.y);
                 sprite.flipX = direction < 0;
 
-                if (!isContra)
-                {
-                    localAudioManager.StartPlayingSteps();
-                }
+                
+            }
+
+            if (!isContra)
+            {
+                localAudioManager.StartPlayingSteps();
             }
         }
         else
