@@ -13,6 +13,10 @@ public class CycleScript : MonoBehaviour
     public float IFramesSec = 2f;
     private Rigidbody2D rb;
 
+    private AudioManager audioManager;
+
+    private RaceLocalAudioManager localAudioManager;
+
     public enum Road
     {
         Top,
@@ -23,6 +27,18 @@ public class CycleScript : MonoBehaviour
 
     private void Awake()
     {
+        audioManager = GameObject.FindGameObjectWithTag("Audio").GetComponent<AudioManager>();
+
+        GameObject localAudioObject = GameObject.FindGameObjectWithTag("LocalAudio");
+        if (localAudioObject != null)
+        {
+            localAudioManager = localAudioObject.GetComponent<RaceLocalAudioManager>();
+        }
+        else
+        {
+            Debug.LogWarning("LocalAudioManager not found");
+        }
+
         sprite = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -46,12 +62,13 @@ public class CycleScript : MonoBehaviour
 
         if (transform.position.x > 3f)
         {
-            // «¿√–”« ¿ » ‘›…ƒ “” ¬¿…“
+            // ???????? ? ???? ?? ????
         }
     }
 
     public void GetControl()
     {
+
         IsControllable = true;
         OnRaceStart.Raise(gameObject, null);
     }
@@ -109,6 +126,7 @@ public class CycleScript : MonoBehaviour
 
     private void Die()
     {
+        localAudioManager.PlaySFX(localAudioManager.crash);
         Destroy(gameObject);
     }
 
