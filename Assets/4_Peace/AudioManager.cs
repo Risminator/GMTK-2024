@@ -8,8 +8,6 @@ public class AudioManager : MonoBehaviour
     [SerializeField] AudioSource musicSource;
     [SerializeField] AudioSource SFXSource;
 
-    [Header("")]
-
     [Header("Peace Soundtrack")]
     public AudioClip PeaceIntroAudioClip;
     public AudioClip PeaceFirstLoopAudioClip;

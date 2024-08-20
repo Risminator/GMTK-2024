@@ -33,6 +33,8 @@ public class SideScrollerMoveScript : MonoBehaviour
 
     public bool isContra;
 
+    private LocalAudioManager localAudioManager;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -44,6 +46,16 @@ public class SideScrollerMoveScript : MonoBehaviour
 
     private void Awake()
     {
+        GameObject localAudioObject = GameObject.FindGameObjectWithTag("LocalAudio");
+        if (localAudioObject != null)
+        {
+            localAudioManager = localAudioObject.GetComponent<LocalAudioManager>();
+        }
+        else
+        {
+            Debug.LogWarning("LocalAudioManager not found");
+        }
+
         body = GetComponent<Rigidbody2D>();
         sprite = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
@@ -108,6 +120,11 @@ public class SideScrollerMoveScript : MonoBehaviour
             {
                 // Резкие повороты body.velocity = new Vector2(-body.velocity.x, body.velocity.y);
                 sprite.flipX = direction < 0;
+
+                if (!isContra)
+                {
+                    localAudioManager.StartPlayingSteps();
+                }
             }
         }
         else
@@ -121,6 +138,11 @@ public class SideScrollerMoveScript : MonoBehaviour
             // Full Stop
             {
                 body.velocity = new Vector2(0, body.velocity.y);
+
+                if (!isContra)
+                {
+                    localAudioManager.StopPlayingSteps();
+                }
             }
         }
 
