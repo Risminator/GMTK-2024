@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Audio
   - Enemy
+  - LocalAudio
   layers:
   - Default
   - TransparentFX
